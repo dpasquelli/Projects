@@ -29,6 +29,12 @@ elseif($text=="Chi ti ha creato?")
 {
 	$response = "Sono stato creato da un programmatore di Offida che si chiama Daniele Pasquelli";
 }
+elseif($text=="Calcolami la somma di 5 e 15")
+{
+	$somma = 5 + 15;
+	$sommatestuale = strval($somma);
+	$response = "La somma di 5 e 15 è $sommatestuale";
+}
 else
 {
 	$response = "Comando non valido!";

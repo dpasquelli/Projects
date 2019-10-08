@@ -14,6 +14,8 @@ $username = isset($message['chat']['username']) ? $message['chat']['username'] :
 $date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 $text = trim($text);
+$somma = 5 + 15;
+$sommatestuale = strval($somma);
 //$text = strtolower($text);
 header("Content-Type: application/json");
 $response = '';
@@ -31,8 +33,6 @@ elseif($text=="Chi ti ha creato?")
 }
 elseif($text=="Calcolami la somma di 5 e 15")
 {
-	$somma = 5 + 15;
-	$sommatestuale = strval($somma);
 	$response = "La somma di 5 e 15 è $sommatestuale";
 }
 else

@@ -12,16 +12,27 @@ $firstname = isset($message['chat']['first_name']) ? $message['chat']['first_nam
 $lastname = isset($message['chat']['last_name']) ? $message['chat']['last_name'] : "";
 $username = isset($message['chat']['username']) ? $message['chat']['username'] : "";
 $date = isset($message['date']) ? $message['date'] : "";
-$response = '';
-if(isset($message['text']))
-{
-	$response = "Ho ricevuto il seguente messaggio di testo: " . $message['text'];
-}
-
-//$text = trim($text);
-//$text = strtolower($text);
-
+$text = isset($message['text']) ? $message['text'] : "";
+$text = trim($text);
+$text = strtolower($text);
 header("Content-Type: application/json");
+$response = '';
+if(strpos($text, "/start") === 0 || $text=="ciao")
+{
+	$response = "Ciao $firstname, benvenuto!";
+}
+elseif($text=="Come ti chiami?")
+{
+	$response = "Il mio nome è Daniele Chatbot";
+}
+elseif($text=="Chi ti ha creato?")
+{
+	$response = "Sono stato creato da un programmatore di Offida che si chiama Daniele Pasquelli";
+}
+else
+{
+	$response = "Comando non valido!";
+}
 $parameters = array('chat_id' => $chatId, "text" => $response);
 $parameters["method"] = "sendMessage";
 echo json_encode($parameters);
